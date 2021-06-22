@@ -19,7 +19,7 @@ public class Usuario implements Serializable{
 	private Integer id;
 	
 	@NotEmpty(message = "Campo nome é obrigatório")
-	@Length(min = 10, max = 120)
+	@Length(min = 10, max = 120, message = "O nome deve ter entre 3 e 100 caracteres")
 	private String nome;
 	
 	@NotEmpty(message = "Campo Login é obrigatório")
