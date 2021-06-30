@@ -16,42 +16,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.patricksouza.angularcrud.domain.Usuario;
-import com.patricksouza.angularcrud.services.UsuarioService;
+import com.patricksouza.angularcrud.domain.Produto;
+import com.patricksouza.angularcrud.services.ProdutoService;
 
 
 @RestController
-@RequestMapping(value = "/usuarios")
-public class UsuarioResource {
+@RequestMapping(value = "/produtos")
+public class ProdutoResource {
 	
 	@Autowired
-	private UsuarioService service;
+	private ProdutoService service;
 	
 	@CrossOrigin(origins = "", allowedHeaders = "")
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Usuario> findById(@PathVariable Integer id){
-		Usuario obj = this.service.findById(id);
+	public ResponseEntity<Produto> findById(@PathVariable Integer id){
+		Produto obj = this.service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@CrossOrigin
 	@GetMapping
-	public ResponseEntity<List<Usuario>> findAll() {
-		List<Usuario> list = service.findAll();
+	public ResponseEntity<List<Produto>> findAll() {
+		List<Produto> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@CrossOrigin
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario obj) {
-		Usuario newObj = service.update(id, obj);
+	public ResponseEntity<Produto> update(@PathVariable Integer id, @RequestBody Produto obj) {
+		Produto newObj = service.update(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 	
 	@CrossOrigin
 	@PostMapping(value = "/create")
-	public ResponseEntity<Usuario> create(@RequestBody Usuario obj) {
-		Usuario newObj = service.create(obj);
+	public ResponseEntity<Produto> create(@RequestBody Produto obj) {
+		Produto newObj = service.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
