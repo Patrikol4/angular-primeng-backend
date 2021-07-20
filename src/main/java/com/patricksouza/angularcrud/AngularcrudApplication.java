@@ -8,7 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.patricksouza.angularcrud.domain.Produto;
 import com.patricksouza.angularcrud.domain.Usuario;
+import com.patricksouza.angularcrud.repositories.ProdutoRepository;
 import com.patricksouza.angularcrud.repositories.UsuarioRepository;
 
 @SpringBootApplication
@@ -19,6 +21,7 @@ public class AngularcrudApplication implements CommandLineRunner{
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	private ProdutoRepository produtoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AngularcrudApplication.class, args);
